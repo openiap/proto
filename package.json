@@ -1,0 +1,20 @@
+{
+  "name": "@openiap/proto",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "node ./post-install.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/openiap/proto.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/openiap/proto/issues"
+  },
+  "homepage": "https://github.com/openiap/proto#readme"
+}

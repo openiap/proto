@@ -1,0 +1,152 @@
+syntax = "proto3";
+package openiap;
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/any.proto";
+import "querys.proto";
+import "queues.proto";
+import "watch.proto";
+import "workitems.proto";
+service FlowService {
+  rpc SetupStream (stream Envelope) returns (stream Envelope) {} 
+  rpc Signin(SigninRequest) returns (SigninResponse);
+  rpc Download(DownloadRequest) returns (DownloadResponse);
+  rpc Upload(UploadRequest) returns (UploadResponse);
+  rpc CustomCommand(CustomCommandRequest) returns (CustomCommandResponse);
+  rpc ListCollections(ListCollectionsRequest) returns (ListCollectionsResponse);
+  rpc DropCollection(DropCollectionRequest) returns (DropCollectionResponse);
+  rpc Query(QueryRequest) returns (QueryResponse);
+  rpc GetDocumentVersion(GetDocumentVersionRequest) returns (GetDocumentVersionResponse);
+  rpc Aggregate(AggregateRequest) returns (AggregateResponse);
+  rpc Count(CountRequest) returns (CountResponse);
+  rpc InsertOne(InsertOneRequest) returns (InsertOneResponse);
+  rpc InsertMany(InsertManyRequest) returns (InsertManyResponse);
+  rpc UpdateOne(UpdateOneRequest) returns (UpdateOneResponse);
+  rpc UpdateDocument(UpdateDocumentRequest) returns (UpdateDocumentResponse);
+  rpc InsertOrUpdateOne(InsertOrUpdateOneRequest) returns (InsertOrUpdateOneResponse);
+  rpc InsertOrUpdateMany(InsertOrUpdateManyRequest) returns (InsertOrUpdateManyResponse);
+  rpc DeleteOne(DeleteOneRequest) returns (DeleteOneResponse);
+  rpc DeleteMany(DeleteManyRequest) returns (DeleteManyResponse);
+  rpc RegisterQueue(RegisterQueueRequest) returns (RegisterQueueResponse);
+  rpc RegisterExchange(RegisterExchangeRequest) returns (RegisterExchangeResponse);
+  rpc QueueMessage(QueueMessageRequest) returns (QueueMessageResponse);
+  rpc UnRegisterQueue(UnRegisterQueueRequest) returns (UnRegisterQueueResponse);
+  rpc Watch(WatchRequest) returns (WatchResponse);
+  rpc UnWatch(UnWatchRequest) returns (UnWatchResponse);
+  rpc PushWorkitem(PushWorkitemRequest) returns (PushWorkitemResponse);
+  rpc PushWorkitems(PushWorkitemsRequest) returns (PushWorkitemsResponse);
+  rpc UpdateWorkitem(UpdateWorkitemRequest) returns (UpdateWorkitemResponse);
+  rpc PopWorkitem(PopWorkitemRequest) returns (PopWorkitemResponse);
+  rpc DeleteWorkitem(DeleteWorkitemRequest) returns (DeleteWorkitemResponse);
+  rpc AddWorkItemQueue(AddWorkItemQueueRequest) returns (AddWorkItemQueueResponse);
+}
+message Envelope {
+  string command = 1;
+  int32 priority = 2;
+  int32 seq = 3;
+  string id = 4;
+  string rid = 5;
+  google.protobuf.Any data = 6;
+  string jwt = 7;
+  string traceid = 8;
+  string spanid = 9;
+}
+message PingRequest {}
+message PingResponse {}
+message ErrorResponse {
+  string message = 1;
+  int32 code = 2;
+  string stack = 3;
+}
+message GetElementRequest {
+  string xpath = 1;
+}
+message GetElementResponse {
+  string xpath = 1;
+}
+message DownloadRequest {
+  string id = 1;
+  string filename = 2;
+}
+message DownloadResponse {
+  string id = 1;
+  string filename = 2;
+  string mimetype = 3;
+}
+message UploadRequest {
+  string filename = 1;
+  string mimetype = 2;
+}
+message UploadResponse {
+  string id = 1;
+  string filename = 2;
+  int32 bytes = 3;
+  int32 chunks = 4;
+  float mb = 5;
+  int32 elapsedTime = 6;
+  float mbps = 7;
+}
+message BeginStream { 
+  string checksum = 1;
+  Stat stat = 2;
+}
+message Stream { 
+  bytes data = 1;
+}
+message EndStream { }
+
+message Stat {
+  float birthtimeMs = 1;
+  int32 blksize = 2;
+  int32 blocks = 3;
+  google.protobuf.Timestamp ctime = 4;
+  float ctimeMs = 5;
+  int32 dev = 6;
+  int32 gid = 7;
+  int32 ino = 8;
+  int32 mode = 9;
+  google.protobuf.Timestamp mtime = 10;
+  float mtimeMs = 11;
+  int32 nlink = 12;
+  int32 rdev = 13;
+  int32 size = 14;
+  int32 uid = 15;
+}
+message CustomCommandRequest {
+  string command = 1;
+  string id = 2;
+  string name = 3;
+  string data = 4;
+}
+message CustomCommandResponse   {
+  string result = 1;
+}
+message SigninRequest {
+  string username = 1;
+  string password = 2;
+  string jwt = 3;
+  bool ping = 4;
+  bool validateonly = 5;
+  string agent = 6;
+  string version = 7;
+  bool longtoken = 8;
+}
+message SigninResponse {
+  string jwt = 1;
+  User user = 2;
+}
+message RefreshToken {
+  string username = 1;
+  string jwt = 2;
+  User user = 3;
+}
+message Role {
+  string _id = 1;
+  string name = 2;
+}
+message User {
+  string _id = 1;
+  string name = 2;
+  string username = 3;
+  string email = 4;
+  repeated Role roles = 5;
+}

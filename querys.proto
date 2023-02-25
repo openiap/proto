@@ -1,0 +1,135 @@
+syntax = "proto3";
+package openiap;
+message ListCollectionsRequest {
+  bool includehist = 1;
+}
+message ListCollectionsResponse {
+  string results = 1;
+}
+message DropCollectionRequest {
+  string collectionname = 1;
+}
+message DropCollectionResponse {
+}
+message QueryRequest {
+  string query = 1;
+  string collectionname = 2;
+  string projection = 3;
+  int32 top = 4; 
+  int32 skip = 5; 
+  string orderby = 6;
+  string queryas = 7;
+}
+message QueryResponse {
+  string results = 1;
+}
+message GetDocumentVersionRequest {
+  string collectionname = 1;
+  string id = 2;
+  int32 version = 3;
+  bool decrypt = 4;
+}
+message GetDocumentVersionResponse {
+  string result = 1;
+}
+message AggregateRequest {
+  string collectionname = 1;
+  string aggregates = 2;
+  string queryas = 3;
+  string hint = 4;
+}
+message AggregateResponse {
+  string results = 1;
+}
+message CountRequest {
+  string collectionname = 1;
+  string query = 2;
+  string queryas = 3;
+}
+message CountResponse {
+  int32 result = 1;
+}
+message InsertOneRequest {
+  string collectionname = 1;
+  string item = 2;
+  int32 w = 3;
+  bool j = 4;
+}
+message InsertOneResponse {
+  string result = 1;
+}
+message InsertManyRequest {
+  string collectionname = 1;
+  string items = 2;
+  int32 w = 3;
+  bool j = 4;
+  bool skipresults = 5;
+}
+message InsertManyResponse {
+  string results = 1;
+}
+message UpdateOneRequest {
+  string collectionname = 1;
+  string item = 2;
+  int32 w = 3;
+  bool j = 4;
+}
+message UpdateOneResponse {
+  string result = 1;
+}
+message UpdateDocumentRequest {
+  string collectionname = 1;
+  string query = 2;
+  string document = 3;
+  int32 w = 4;
+  bool j = 5;
+}
+message UpdateResult {
+  bool acknowledged = 1;
+  int32 matchedCount = 2;
+  int32 modifiedCount = 3;
+  int32 upsertedCount = 4;
+  string upsertedId = 5;
+}
+message UpdateDocumentResponse {
+  UpdateResult opresult = 1;
+}
+message InsertOrUpdateOneRequest {
+  string collectionname = 1;
+  string uniqeness = 2;
+  string item = 3;
+  int32 w = 4;
+  bool j = 5;
+}
+message InsertOrUpdateOneResponse {
+  string result = 1;
+}
+message InsertOrUpdateManyRequest {
+  string collectionname = 1;
+  string uniqeness = 2;
+  string items = 3;
+  int32 w = 4;
+  bool j = 5;
+  bool skipresults = 6;
+}
+message InsertOrUpdateManyResponse {
+  string results = 1;
+}
+message DeleteOneRequest {
+  string collectionname = 1;
+  string id = 2;
+  bool recursive = 3;
+}
+message DeleteOneResponse {
+  int32 affectedrows = 1;
+}
+message DeleteManyRequest {
+  string collectionname = 1;
+  string query = 2;
+  bool recursive = 3;
+  repeated string ids = 4;
+}
+message DeleteManyResponse {
+  int32 affectedrows = 1;
+}
+
