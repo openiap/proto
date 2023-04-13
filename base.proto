@@ -52,6 +52,7 @@ message Envelope {
 }
 message PingRequest {}
 message PingResponse {}
+message Noop {}
 message ErrorResponse {
   string message = 1;
   int32 code = 2;
