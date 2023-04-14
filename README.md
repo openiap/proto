@@ -24,3 +24,13 @@ const data = Any.create({type_url: "type.googleapis.com/openiap.SigninRequest", 
 const envelope = Envelope.create({ command: "signin", data, jwt: opt.jwt });
 ```
 We can now send this enveloper over any transport protocol, like GRPC, WebSocket, REST, named pipes or even raw TCP sockets
+
+And Envelope needs a command, matching the any type assigned to data
+The client must assign a random and unqieu ID to each enveloper
+The client and server must assing the ID to rid when sending a response to a message
+The client can override who to run a message as, by setting jwt on a non-reply message, if that message type supports it
+The client also need to set seq starting from 1 and adding one for every message sent.
+The server must order all messages by seq number and process them in order.
+The Server must disconnect a client sending multiple packages with same seq number 
+The server must disconnect a client sending to many unordered packages, to avoid needing to cache to many messages
+The client should send a traceid and spanid for each request to allow tracing across domains
