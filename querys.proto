@@ -11,6 +11,33 @@ message DropCollectionRequest {
 }
 message DropCollectionResponse {
 }
+message col_timeseries {
+  string timeField = 1;
+  string metaField = 2;
+  string granularity = 3;
+}
+message col_collation {
+  string locale = 1;
+  bool caseLevel = 2;
+  string caseFirst = 3;
+  int32 strength = 4;
+  bool numericOrdering = 5;
+  string alternate = 6; 
+  string maxVariable = 7;
+  bool backwards = 8;
+}
+message CreateCollectionRequest {
+    string collectionname = 1;
+    col_collation collation = 2;
+    col_timeseries timeseries = 3;
+    int32 expireAfterSeconds = 4;
+    bool changeStreamPreAndPostImages = 5;
+    bool capped = 6;
+    int32 max = 7;
+    int32 size = 8;
+}
+message CreateCollectionResponse {
+}
 message QueryRequest {
   string query = 1;
   string collectionname = 2;
