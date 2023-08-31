@@ -23,6 +23,7 @@ message QueueMessageRequest {
     string exchangename = 5;
     string data = 6;
     bool striptoken = 7;
+    int32 expiration = 8;
 }
 message QueueMessageResponse {
     string queuename = 1;
