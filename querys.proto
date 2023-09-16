@@ -76,6 +76,15 @@ message CountRequest {
 message CountResponse {
   int32 result = 1;
 }
+message DistinctRequest {
+  string collectionname = 1;
+  string query = 2;
+  string queryas = 3;
+  string options = 4;
+}
+message DistinctResponse {
+  string results = 1;
+}
 message InsertOneRequest {
   string collectionname = 1;
   string item = 2;
