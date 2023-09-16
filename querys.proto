@@ -84,7 +84,7 @@ message DistinctRequest {
   string options = 6;
 }
 message DistinctResponse {
-  string results = 1;
+  repeated string results = 1;
 }
 message InsertOneRequest {
   string collectionname = 1;
