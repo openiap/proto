@@ -78,9 +78,10 @@ message CountResponse {
 }
 message DistinctRequest {
   string collectionname = 1;
-  string query = 2;
-  string queryas = 3;
-  string options = 4;
+  string field = 3;
+  string query = 4;
+  string queryas = 5;
+  string options = 6;
 }
 message DistinctResponse {
   string results = 1;
