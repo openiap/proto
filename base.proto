@@ -137,6 +137,7 @@ message SigninRequest {
 message SigninResponse {
   string jwt = 1;
   User user = 2;
+  string config = 3;
 }
 message RefreshToken {
   string username = 1;
