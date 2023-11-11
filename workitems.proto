@@ -111,13 +111,15 @@ message WorkItemQueue {
 }
 message AddWorkItemQueueRequest { 
     WorkItemQueue workitemqueue = 1;
+    bool skiprole = 2;    
 }
 message AddWorkItemQueueResponse { 
     WorkItemQueue workitemqueue = 1;
 }
 message UpdateWorkItemQueueRequest { 
     WorkItemQueue workitemqueue = 1;
-    bool purge = 2;
+    bool skiprole = 2;
+    bool purge = 3;
 }
 message UpdateWorkItemQueueResponse { 
     WorkItemQueue workitemqueue = 1;
