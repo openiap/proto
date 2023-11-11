@@ -40,6 +40,8 @@ service FlowService {
   rpc PopWorkitem(PopWorkitemRequest) returns (PopWorkitemResponse);
   rpc DeleteWorkitem(DeleteWorkitemRequest) returns (DeleteWorkitemResponse);
   rpc AddWorkItemQueue(AddWorkItemQueueRequest) returns (AddWorkItemQueueResponse);
+  rpc UpdateWorkItemQueue(UpdateWorkItemQueueRequest) returns (UpdateWorkItemQueueResponse);
+  rpc DeleteWorkItemQueue(DeleteWorkItemQueueRequest) returns (DeleteWorkItemQueueResponse);
   rpc EnsureCustomer(EnsureCustomerRequest) returns (EnsureCustomerResponse);
 }
 message Envelope {

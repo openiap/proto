@@ -107,22 +107,26 @@ message WorkItemQueue {
     string _modifiedby = 20;
     google.protobuf.Timestamp _modified = 21;
     int32 _version = 22;
+    string packageid = 23;
 }
 message AddWorkItemQueueRequest { 
-    string name = 1;
-    string robotqueue = 2;
-    string amqpqueue = 3;
-    string projectid = 4;
-    bool skiprole = 5;
-    int32 maxretries = 6;
-    int32 initialdelay = 7;
-    int32 retrydelay = 8;
-    string success_wiqid = 9;
-    string failed_wiqid = 10;
-    string success_wiq = 11;
-    string failed_wiq = 12;
-    repeated Ace _acl = 13;
+    WorkItemQueue workitemqueue = 1;
 }
 message AddWorkItemQueueResponse { 
+    WorkItemQueue workitemqueue = 1;
+}
+message UpdateWorkItemQueueRequest { 
+    WorkItemQueue workitemqueue = 1;
+    bool purge = 2;
+}
+message UpdateWorkItemQueueResponse { 
+    WorkItemQueue workitemqueue = 1;
+}
+message DeleteWorkItemQueueRequest { 
+    string wiq = 1;
+    string wiqid = 2;
+    bool purge = 3;
+}
+message DeleteWorkItemQueueResponse { 
     WorkItemQueue workitemqueue = 1;
 }
