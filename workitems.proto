@@ -130,5 +130,4 @@ message DeleteWorkItemQueueRequest {
     bool purge = 3;
 }
 message DeleteWorkItemQueueResponse { 
-    WorkItemQueue workitemqueue = 1;
 }
