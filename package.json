@@ -1,10 +1,11 @@
 {
   "name": "@openiap/proto",
   "version": "1.0.0",
-  "description": "",
+  "description": "NodeJS client: [repo](https://github.com/openiap/nodeapi) [doc](https://openiap.github.io/nodeapi/) Browser client: [repo](https://github.com/openiap/jsapi) [vue3 example](https://github.com/openiap/vue3-web-template) Python client: [repo](https://github.com/openiap/pyapi) [doc](https://openiap.github.io/nodeapi/)",
   "main": "index.js",
   "scripts": {
-    "postinstall": "node ./post-install.js"
+    "serve": "node index.js",
+    "generate": "protobuf2swagger config.js"
   },
   "repository": {
     "type": "git",
@@ -16,5 +17,9 @@
   "bugs": {
     "url": "https://github.com/openiap/proto/issues"
   },
-  "homepage": "https://github.com/openiap/proto#readme"
+  "homepage": "https://github.com/openiap/proto#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "protobuf2swagger": "^0.5.0"
+  }
 }
