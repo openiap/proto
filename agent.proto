@@ -29,7 +29,7 @@ message GetAgentPodsRequest {
 }
 message GetAgentPodsResponse {
     // JSON array of pods
-    string result = 1;
+    string results = 1;
 }
 message DeleteAgentPodRequest { 
     // _id of an agent from the agents collection
