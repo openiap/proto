@@ -38,15 +38,31 @@ message CreateCollectionRequest {
 }
 message CreateCollectionResponse {
 }
+// MongoDB Query Request.
 message QueryRequest {
+  // MongoDB Query to execute. This field is required.
   string query = 1;
+
+  // MongoDB Collection to query. This field is required.
   string collectionname = 2;
+
+  // MongoDB Query projection. This field is optional.
   string projection = 3;
-  int32 top = 4; 
-  int32 skip = 5; 
+
+  // MongoDB Maximum number of documents to return. This field is optional with a default of 100.
+  int32 top = 4;
+
+  // MongoDB Number of documents to skip, used for paging on the same query. This field is optional with a default of 0.
+  int32 skip = 5;
+
+  // MongoDB order by. This field is optional with a default of {"_id": 1}. 
+  // You can specify "timestamp" as a string or an object like {"timestamp": -1}.
   string orderby = 6;
+
+  // Query as if you were this _id. (_id can be a user, role, or customer from the users collection)
   string queryas = 7;
 }
+
 message QueryResponse {
   string results = 1;
 }
