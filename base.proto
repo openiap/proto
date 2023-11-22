@@ -389,7 +389,7 @@ message CreateIndexRequest {
   string name = 4;
 }
 message CreateIndexResponse   {
-  // Index specification
+  // Index name
   string result = 1;
 }
 message DeletePackageRequest {
