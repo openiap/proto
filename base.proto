@@ -219,6 +219,15 @@ service FlowService {
   // Require admins rights
   rpc CreateIndex(CreateIndexRequest) returns (CreateIndexResponse);
 
+  // Create an Index on a MongoDB Collection
+  // Will not fail if exists, but will fail if spec is different from existing.
+  // Require admins rights
+  rpc GetIndexes(GetIndexesRequest) returns (GetIndexesResponse);
+
+  // Delete an Index from a MongoDB Collection
+  // Require admins rights
+  rpc DropIndex(DropIndexRequest) returns (DropIndexResponse);
+
   // Delete an agent Package.
   // Removes the associated file and then delete te package from the agents collection.
   // Requires delete permission on the Package
@@ -304,7 +313,7 @@ message CustomCommandRequest {
   string name = 3;
   string data = 4;
 }
-message CustomCommandResponse   {
+message CustomCommandResponse {
   string result = 1;
 }
 message SigninRequest {
@@ -388,13 +397,31 @@ message CreateIndexRequest {
   // Index name. Leave blank to let mongodb auto generate it
   string name = 4;
 }
-message CreateIndexResponse   {
+message CreateIndexResponse {
   // Index name
   string result = 1;
 }
+message GetIndexesRequest {
+  // Collection to create index on
+  string collectionname = 1;
+}
+message GetIndexesResponse {
+  // List of indexes for collection
+  string results = 1;
+}
+
+message DropIndexRequest {
+  // Collection to create index on
+  string collectionname = 1;
+  // Index name
+  string name = 2;
+}
+message DropIndexResponse {
+}
+
 message DeletePackageRequest {
   // id of package to delete,found in `agents` collection with {"_type": "package"}
   string packageid = 1;
 }
-message DeletePackageResponse   {
+message DeletePackageResponse {
 }
