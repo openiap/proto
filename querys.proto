@@ -63,7 +63,7 @@ message QueryRequest {
   string queryas = 7;
 
   // Enabling explain will provides information on the execution of the query
-  bool explain = 6;
+  bool explain = 8;
 }
 
 message QueryResponse {
