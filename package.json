@@ -1,0 +1,21 @@
+{
+    "name": "@openiap/proto",
+    "version": "1.0.0",
+    "description": "NodeJS client: [repo](https://github.com/openiap/nodeapi) [doc](https://openiap.github.io/nodeapi/) Browser client: [repo](https://github.com/openiap/jsapi) [vue3 example](https://github.com/openiap/vue3-web-template) Python client: [repo](https://github.com/openiap/pyapi) [doc](https://openiap.github.io/nodeapi/)",
+    "main": "index.js",
+    "scripts": {
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/openiap/proto.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+      "url": "https://github.com/openiap/proto/issues"
+    },
+    "homepage": "https://github.com/openiap/proto#readme",
+    "dependencies": {
+    }
+  }
