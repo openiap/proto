@@ -271,6 +271,7 @@ message DownloadResponse {
 message UploadRequest {
   string filename = 1;
   string mimetype = 2;
+  string metadata = 3;
 }
 message UploadResponse {
   string id = 1;
