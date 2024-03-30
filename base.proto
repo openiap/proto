@@ -262,6 +262,7 @@ message GetElementResponse {
 message DownloadRequest {
   string id = 1;
   string filename = 2;
+  string collectionname = 3;
 }
 message DownloadResponse {
   string id = 1;
