@@ -25,6 +25,7 @@ message Workitem {
     string errormessage = 17;
     string errorsource = 18;
     string errortype = 19;
+    string _workspaceid = 20;
 }
 message WorkitemFile {
     string filename = 1;
@@ -108,6 +109,7 @@ message WorkItemQueue {
     google.protobuf.Timestamp _modified = 21;
     int32 _version = 22;
     string packageid = 23;
+    string _workspaceid = 24;
 }
 message AddWorkItemQueueRequest { 
     WorkItemQueue workitemqueue = 1;
